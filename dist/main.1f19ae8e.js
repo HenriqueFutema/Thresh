@@ -117,9 +117,40 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"main.js":[function(require,module,exports) {
-console.log("Thresh");
-},{}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+})({"vdom/createElement.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _default = function _default(tagName, _ref) {
+  var attrs = _ref.attrs,
+      children = _ref.children;
+  return {
+    tagName: tagName,
+    attrs: attrs,
+    children: children
+  };
+};
+
+exports.default = _default;
+},{}],"main.js":[function(require,module,exports) {
+"use strict";
+
+var _createElement = _interopRequireDefault(require("./vdom/createElement"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var vApp = (0, _createElement.default)("div", {
+  attrs: {
+    id: "app"
+  },
+  children: []
+});
+console.log(vApp);
+},{"./vdom/createElement":"vdom/createElement.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
