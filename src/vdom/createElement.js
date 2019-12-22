@@ -1,4 +1,4 @@
-export default (tagName, { attrs, children }) => {
+export default (tagName, { attrs = {}, children = [] } = {}) => {
   return {
     tagName,
     attrs,

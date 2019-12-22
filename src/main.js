@@ -1,10 +1,19 @@
 import createElement from "./vdom/createElement";
+import render from "./vdom/render";
 
 const vApp = createElement("div", {
   attrs: {
     id: "app"
   },
-  children: []
+  children: [
+    createElement("img", {
+      attrs: {
+        src: "https://media.giphy.com/media/ZaDwDjIExGFsM32pjW/giphy.gif"
+      }
+    })
+  ]
 });
 
-console.log(vApp);
+const $app = render(vApp);
+
+console.log($app);

@@ -125,9 +125,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _default = function _default(tagName, _ref) {
-  var attrs = _ref.attrs,
-      children = _ref.children;
+var _default = function _default(tagName) {
+  var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+      _ref$attrs = _ref.attrs,
+      attrs = _ref$attrs === void 0 ? {} : _ref$attrs,
+      _ref$children = _ref.children,
+      children = _ref$children === void 0 ? [] : _ref$children;
+
   return {
     tagName: tagName,
     attrs: attrs,
@@ -136,10 +140,69 @@ var _default = function _default(tagName, _ref) {
 };
 
 exports.default = _default;
+},{}],"vdom/render.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var render = function render(vNode) {
+  var $el = document.createElement(vNode.tagName);
+
+  for (var _i = 0, _Object$entries = Object.entries(vNode.attrs); _i < _Object$entries.length; _i++) {
+    var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
+        k = _Object$entries$_i[0],
+        v = _Object$entries$_i[1];
+
+    $el.setAttribute(k, v);
+  }
+
+  var _iteratorNormalCompletion = true;
+  var _didIteratorError = false;
+  var _iteratorError = undefined;
+
+  try {
+    for (var _iterator = vNode.children[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      var child = _step.value;
+      var $child = render(child);
+      $el.appendChild($child);
+    }
+  } catch (err) {
+    _didIteratorError = true;
+    _iteratorError = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion && _iterator.return != null) {
+        _iterator.return();
+      }
+    } finally {
+      if (_didIteratorError) {
+        throw _iteratorError;
+      }
+    }
+  }
+
+  return $el;
+};
+
+var _default = render;
+exports.default = _default;
 },{}],"main.js":[function(require,module,exports) {
 "use strict";
 
 var _createElement = _interopRequireDefault(require("./vdom/createElement"));
+
+var _render = _interopRequireDefault(require("./vdom/render"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -147,10 +210,15 @@ var vApp = (0, _createElement.default)("div", {
   attrs: {
     id: "app"
   },
-  children: []
+  children: [(0, _createElement.default)("img", {
+    attrs: {
+      src: "https://media.giphy.com/media/ZaDwDjIExGFsM32pjW/giphy.gif"
+    }
+  })]
 });
-console.log(vApp);
-},{"./vdom/createElement":"vdom/createElement.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+var $app = (0, _render.default)(vApp);
+console.log($app);
+},{"./vdom/createElement":"vdom/createElement.js","./vdom/render":"vdom/render.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -178,7 +246,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55189" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56081" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
