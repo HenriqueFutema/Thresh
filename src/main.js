@@ -21,14 +21,14 @@ const createVApp = (state) => createElement('div', {
   ],
 });
 
-let count = 0;
-let vApp = createVApp(count);
+let vApp = createVApp(manageState.getState());
 const $app = render(vApp);
 
 const elementAppId = document.getElementById('app')
 let $rootEl = mount($app, elementAppId);
-
+let count = 0
 setInterval(() => {
+  manageState.setState('count', manageState.getState().count + 1) 
   count++;
   generateApp()
 }, 1000);
@@ -38,11 +38,10 @@ const generateApp = () => {
   manageState.createState('name', 'henrique')
   manageState.setState('name', 'Futema')
   manageState.setState('count', count)
-  console.log(manageState.getState())
-  const vNewApp = createVApp(manageState.getState());
+  const vNewApp = createVApp(manageState.getState())
   const patch = diff(vApp, vNewApp);
   $rootEl = patch($rootEl);
   vApp = vNewApp;
 }
 
-console.log($app);
+generateApp()
