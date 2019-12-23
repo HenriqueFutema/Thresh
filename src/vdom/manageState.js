@@ -1,7 +1,7 @@
 let state = {}
 
 const createState = (_key, value) => {
-    state = {...state, [_key]: value}
+    return state = {...state, [_key]: value}
 }
 
 const getState = () =>{
@@ -9,7 +9,7 @@ const getState = () =>{
 }
 
 const setState = (_key, value) =>{
-    state[_key] = value
+    return state[_key] = value
 }
 
 export default { createState, getState, setState }

@@ -4,15 +4,16 @@ import mount from './vdom/mount';
 import diff from './vdom/diff';
 import manageState from './vdom/manageState'
 
-const createVApp = (count) => createElement('div', {
+const createVApp = (state) => createElement('div', {
   attrs: {
     id: 'app',
-    dataCount: count,
+    dataCount: state.count,
   },
   children: [
     createElement('input'),
-    String(count),
-    ...Array.from({ length: count }, () => createElement('p', {
+    String(state.name),
+    String(state.count),
+    ...Array.from({ length: state.count }, () => createElement('p', {
       children:[
         "aaaa"
       ]
@@ -38,7 +39,7 @@ const generateApp = () => {
   manageState.setState('name', 'Futema')
   manageState.setState('count', count)
   console.log(manageState.getState())
-  const vNewApp = createVApp(count);
+  const vNewApp = createVApp(manageState.getState());
   const patch = diff(vApp, vNewApp);
   $rootEl = patch($rootEl);
   vApp = vNewApp;
