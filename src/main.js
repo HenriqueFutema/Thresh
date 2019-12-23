@@ -9,15 +9,7 @@ const createVApp = count =>
       id: "app",
       dataCount: count
     },
-    children: [
-      createElement("input"),
-      String(count),
-      createElement("img", {
-        attrs: {
-          src: "https://media.giphy.com/media/ZaDwDjIExGFsM32pjW/giphy.gif"
-        }
-      })
-    ]
+    children: [createElement("input"), String(count)]
   });
 
 let count = 0;
