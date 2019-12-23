@@ -1,4 +1,4 @@
-import render from "./render";
+import render from './render';
 
 const zip = (xs, ys) => {
   const zipped = [];
@@ -71,7 +71,8 @@ const diff = (vOldNode, vNewNode) => {
     };
   }
 
-  if (typeof vOldNode === "string" || typeof vNewNode === "string") {
+  if (typeof vOldNode === 'string' ||
+    typeof vNewNode === 'string') {
     if (vOldNode !== vNewNode) {
       return $node => {
         const $newNode = render(vNewNode);
@@ -93,7 +94,7 @@ const diff = (vOldNode, vNewNode) => {
 
   const patchAttrs = diffAttrs(vOldNode.attrs, vNewNode.attrs);
   const patchChildren = diffChildren(vOldNode.children, vNewNode.children);
-
+  
   return $node => {
     patchAttrs($node);
     patchChildren($node);
