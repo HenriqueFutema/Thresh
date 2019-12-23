@@ -8,4 +8,8 @@ const getState = () =>{
     return state
 }
 
-export default { createState, getState }
+const setState = (_key, value) =>{
+    state[_key] = value
+}
+
+export default { createState, getState, setState }

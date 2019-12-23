@@ -34,6 +34,9 @@ setInterval(() => {
 
 const generateApp = () => {
   manageState.createState('count', 0)
+  manageState.createState('name', 'henrique')
+  manageState.setState('name', 'Futema')
+  manageState.setState('count', count)
   console.log(manageState.getState())
   const vNewApp = createVApp(count);
   const patch = diff(vApp, vNewApp);
