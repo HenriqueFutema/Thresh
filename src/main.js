@@ -2,6 +2,8 @@ import createElement from './vdom/createElement';
 import render from './vdom/render';
 import mount from './vdom/mount';
 import diff from './vdom/diff';
+import createState from './vdom/manageState'
+import getState from './vdom/manageState'
 
 const createVApp = (count) => createElement('div', {
   attrs: {
@@ -32,6 +34,8 @@ setInterval(() => {
 }, 10000);
 
 const generateApp = () => {
+  createState(count, 0)
+  console.log(getState())
   const vNewApp = createVApp(count);
   const patch = diff(vApp, vNewApp);
   $rootEl = patch($rootEl);
