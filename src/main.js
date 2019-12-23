@@ -20,10 +20,15 @@ let $rootEl = mount($app, document.getElementById("app"));
 
 setInterval(() => {
   count++;
+  generateApp()
+}, 1000);
+
+
+const generateApp = () => {
   const vNewApp = createVApp(count);
   const patch = diff(vApp, vNewApp);
   $rootEl = patch($rootEl);
   vApp = vNewApp;
-}, 1000);
+}
 
 console.log($app);
