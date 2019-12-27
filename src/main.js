@@ -17,8 +17,8 @@ const createVApp = (state) => createElement('div', {
     createElement('input', {
       attrs:{
         value: state.name,
-        id: 'inpName',
-        tModel: 'inpName'
+        id: 'name',
+        tModel: 'name'
       }
     }),
     String(state.name),
@@ -38,20 +38,20 @@ const $app = render(vApp);
 const elementAppId = document.getElementById('app')
 let $rootEl = mount($app, elementAppId);
 let count = 0
+
 generateApp;
+
 setInterval(() => {
   manageState.setState('count', manageState.getState().count + 1) 
   count++;
   generateApp();
 }, 10000);
 
-document.getElementById('inpName').addEventListener('change', () => console.log("test"))
+manageState.createState('count', 0);
+manageState.createState('name', 'henrique');
+manageState.setState('count', count);
 
 const generateApp = () => {
-  manageState.createState('count', 0);
-  manageState.createState('name', 'henrique');
-  manageState.setState('name', 'Futema');
-  manageState.setState('count', count);
   const vNewApp = createVApp(manageState.getState())
   const patch = diff(vApp, vNewApp);
   $rootEl = patch($rootEl);

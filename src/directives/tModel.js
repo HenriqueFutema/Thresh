@@ -1,3 +1,6 @@
+import manageState from '../vdom/manageState'
+
+
 const tModel = (el) =>{
     window.onload = function(){
         console.log(el)
@@ -5,11 +8,9 @@ const tModel = (el) =>{
         let $el = document.getElementById(el)
         
         function changeInput(){
-
-            console.log("asasasas");
+            manageState.setState(el, $el.value)
         }
-        $el.addEventListener('change', () => console.log("test"))
-
+        $el.addEventListener('change', changeInput)
     }
 }
 
