@@ -7,11 +7,9 @@ const tModel = (el) =>{
         let $el = document.getElementById(el)
         
         function changeInput(){
-
-            console.log("asasasas");
+            manageState.setState(el, $el.value)
         }
-        $el.addEventListener('change', () => console.log("test"))
-
+        $el.addEventListener('change', changeInput)
     }
 }
 
