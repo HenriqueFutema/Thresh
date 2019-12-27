@@ -12,4 +12,4 @@ const setState = (_key, value) =>{
     return state[_key] = value
 }
 
-export default { createState, getState, setState }
+export default { createState, getState, setState } 

@@ -1,3 +1,5 @@
+import manageState from '../vdom/manageState'
+
 const tModel = (el) =>{
     window.onload = function(){
         console.log(el)

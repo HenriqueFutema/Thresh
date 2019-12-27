@@ -8,7 +8,15 @@ import diff from './vdom/diff';
 import manageState from './vdom/manageState'
 import tModel from './directives/tModel'
 
-const createVApp = (state) => createElement('div', {
+let methods = {
+
+  test: () =>{
+    console.log("dfdf")
+  }
+
+}
+
+const createVApp = (state, methods) => createElement('div', {
   attrs: {
     id: 'app',
     dataCount: state.count,
@@ -20,6 +28,13 @@ const createVApp = (state) => createElement('div', {
         id: 'inpName',
         tModel: 'inpName'
       }
+    }),
+    createElement('button', {
+      attrs:{
+        id: "btn",
+        tClick: "methods.test"
+      },
+      children:["Button"]
     }),
     String(state.name),
     String(state.count),
@@ -37,25 +52,34 @@ const $app = render(vApp);
 
 const elementAppId = document.getElementById('app')
 let $rootEl = mount($app, elementAppId);
-let count = 0
-generateApp;
+let count = 0;
+
 setInterval(() => {
   manageState.setState('count', manageState.getState().count + 1) 
   count++;
   generateApp();
 }, 10000);
 
-document.getElementById('inpName').addEventListener('change', () => console.log("test"))
+
+let arrMethods = {}
+for(const m of Object.values(methods)){
+  const _methods = m.toString().replace(/^[^{]*{\s*/,'').replace(/\s*}[^}]*$/,'');
+  console.log(_methods);
+  
+}
+
+manageState.createState('count', 0);
+manageState.createState('name', 'henrique');
+manageState.setState('count', count);
 
 const generateApp = () => {
-  manageState.createState('count', 0);
-  manageState.createState('name', 'henrique');
-  manageState.setState('name', 'Futema');
-  manageState.setState('count', count);
-  const vNewApp = createVApp(manageState.getState())
+  console.log(arrMethods)
+  const vNewApp = createVApp(manageState.getState(), arrMethods)
   const patch = diff(vApp, vNewApp);
   $rootEl = patch($rootEl);
   vApp = vNewApp; 
 }
 
 generateApp();
+
+export default generateApp;
