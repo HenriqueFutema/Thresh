@@ -1,13 +1,16 @@
 const tModel = (el) =>{
-    console.log(document.getElementsByName(el))
-    // const _el = 
-    //      document.getElementsByName(el)[0].addEventListener('change', ()=>console.log("test"))
-    //      || document.getElementById(el) 
-    //      || document.getElementsByClassName(el)
+    window.onload = function(){
+        console.log(el)
+        console.log(document.getElementById(el))
+        let $el = document.getElementById(el)
+        
+        function changeInput(){
 
+            console.log("asasasas");
+        }
+        $el.addEventListener('change', () => console.log("test"))
 
-    // console.log(_el);
-    
+    }
 }
 
 
