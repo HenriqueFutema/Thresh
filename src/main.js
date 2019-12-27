@@ -62,12 +62,21 @@ setInterval(() => {
   generateApp();
 }, 10000);
 
+
+let arrMethods = {}
+for(const m of Object.values(methods)){
+  const _methods = m.toString().replace(/^[^{]*{\s*/,'').replace(/\s*}[^}]*$/,'');
+  console.log(_methods);
+  
+}
+
 manageState.createState('count', 0);
 manageState.createState('name', 'henrique');
 manageState.setState('count', count);
 
 const generateApp = () => {
-  const vNewApp = createVApp(manageState.getState())
+  console.log(arrMethods)
+  const vNewApp = createVApp(manageState.getState(), arrMethods)
   const patch = diff(vApp, vNewApp);
   $rootEl = patch($rootEl);
   vApp = vNewApp; 
