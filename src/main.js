@@ -8,15 +8,21 @@ import diff from './vdom/diff';
 import manageState from './vdom/manageState'
 import tModel from './directives/tModel'
 
-let methods = {
 
+
+manageState.createState('count', 0);
+manageState.createState('name', 'henrique');
+
+const data = manageState.getState()
+console.log(data)
+let methods = {
   test: () =>{
-    console.log("dfdf")
+    console.log(data.name)
   }
 
 }
 
-const createVApp = (state, methods) => createElement('div', {
+const createVApp = (state, arrMethods) => createElement('div', {
   attrs: {
     id: 'app',
     dataCount: state.count,
@@ -32,7 +38,7 @@ const createVApp = (state, methods) => createElement('div', {
     createElement('button', {
       attrs:{
         id: "btn",
-        tClick: "methods.test"
+        onClick: arrMethods.test
       },
       children:["Button"]
     }),
@@ -46,15 +52,24 @@ const createVApp = (state, methods) => createElement('div', {
   ],
 });
 
+let arrMethods = {}
 
-let vApp = createVApp(manageState.getState());
+for(const m of Object.values(methods)){
+  const _method = m.toString().replace(/^[^{]*{\s*/,'').replace(/\s*}[^}]*$/,'');
+  for(const k of Object.keys(methods)){
+    arrMethods[k] = _method
+  }
+}
+
+//DATA TEST
+let count = 0
+
+let vApp = createVApp(manageState.getState(), arrMethods);
 const $app = render(vApp);
 
 const elementAppId = document.getElementById('app')
 let $rootEl = mount($app, elementAppId);
-let count = 0
 
-generateApp;
 
 setInterval(() => {
   manageState.setState('count', manageState.getState().count + 1) 
@@ -63,19 +78,8 @@ setInterval(() => {
 }, 10000);
 
 
-let arrMethods = {}
-for(const m of Object.values(methods)){
-  const _methods = m.toString().replace(/^[^{]*{\s*/,'').replace(/\s*}[^}]*$/,'');
-  console.log(_methods);
-  
-}
-
-manageState.createState('count', 0);
-manageState.createState('name', 'henrique');
-manageState.setState('count', count);
-
 const generateApp = () => {
-  console.log(arrMethods)
+  console.log(arrMethods.test)
   const vNewApp = createVApp(manageState.getState(), arrMethods)
   const patch = diff(vApp, vNewApp);
   $rootEl = patch($rootEl);
@@ -83,5 +87,3 @@ const generateApp = () => {
 }
 
 generateApp();
-
-export default generateApp;
