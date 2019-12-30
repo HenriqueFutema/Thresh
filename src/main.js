@@ -33,7 +33,10 @@ const createVApp = (state, arrMethods=[]) => createElement('div', {
     createElement('button', {
       attrs:{
         id: "btn",
-        onClick: test
+        tClick: {
+          method: test,
+          id: 'btn'
+        }
       },
       children:["Button"]
     }),
