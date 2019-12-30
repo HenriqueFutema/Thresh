@@ -6,18 +6,17 @@ import diff from './vdom/diff';
 
 //USER
 import manageState from './vdom/manageState'
-import tModel from './directives/tModel'
-
 
 
 manageState.createState('count', 0);
 manageState.createState('name', 'henrique');
 
-const data = manageState.getState()
+let data = manageState.getState()
 console.log(data)
 let methods = {
-  test: () =>{
-    console.log(data.name)
+  test: function() {
+    
+    console.log(data)
   }
 
 }
@@ -55,7 +54,13 @@ const createVApp = (state, arrMethods) => createElement('div', {
 let arrMethods = {}
 
 for(const m of Object.values(methods)){
-  const _method = m.toString().replace(/^[^{]*{\s*/,'').replace(/\s*}[^}]*$/,'');
+  const _method = m.toString()
+    .replace(/^[^{]*{\s*/,'')
+    .replace(/\s*}[^}]*$/,'')
+    .replace(/_/g, "")
+    .replace('default.', '')
+
+  console.log(_method)
   for(const k of Object.keys(methods)){
     arrMethods[k] = _method
   }
