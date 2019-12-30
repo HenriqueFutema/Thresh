@@ -79,7 +79,6 @@ setInterval(() => {
 
 
 const generateApp = () => {
-  console.log(arrMethods.test)
   const vNewApp = createVApp(manageState.getState(), arrMethods)
   const patch = diff(vApp, vNewApp);
   $rootEl = patch($rootEl);
