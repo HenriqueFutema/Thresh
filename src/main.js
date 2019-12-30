@@ -11,17 +11,13 @@ import manageState from './vdom/manageState'
 manageState.createState('count', 0);
 manageState.createState('name', 'henrique');
 
-let data = manageState.getState()
-console.log(data)
-let methods = {
-  test: function() {
-    
-    console.log(data)
-  }
 
+const test = () =>{
+  console.log("aaaaa")
 }
 
-const createVApp = (state, arrMethods) => createElement('div', {
+
+const createVApp = (state, arrMethods=[]) => createElement('div', {
   attrs: {
     id: 'app',
     dataCount: state.count,
@@ -37,7 +33,7 @@ const createVApp = (state, arrMethods) => createElement('div', {
     createElement('button', {
       attrs:{
         id: "btn",
-        onClick: arrMethods.test
+        onClick: test
       },
       children:["Button"]
     }),
@@ -51,25 +47,11 @@ const createVApp = (state, arrMethods) => createElement('div', {
   ],
 });
 
-let arrMethods = {}
-
-for(const m of Object.values(methods)){
-  const _method = m.toString()
-    .replace(/^[^{]*{\s*/,'')
-    .replace(/\s*}[^}]*$/,'')
-    .replace(/_/g, "")
-    .replace('default.', '')
-
-  console.log(_method)
-  for(const k of Object.keys(methods)){
-    arrMethods[k] = _method
-  }
-}
 
 //DATA TEST
 let count = 0
 
-let vApp = createVApp(manageState.getState(), arrMethods);
+let vApp = createVApp(manageState.getState());
 const $app = render(vApp);
 
 const elementAppId = document.getElementById('app')
@@ -84,7 +66,7 @@ setInterval(() => {
 
 
 const generateApp = () => {
-  const vNewApp = createVApp(manageState.getState(), arrMethods)
+  const vNewApp = createVApp(manageState.getState())
   const patch = diff(vApp, vNewApp);
   $rootEl = patch($rootEl);
   vApp = vNewApp; 
