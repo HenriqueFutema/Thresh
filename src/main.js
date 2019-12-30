@@ -13,12 +13,12 @@ manageState.createState('name', 'henrique');
 
 
 const test = () =>{
-  const data = manageState.getState()
-  console.log(data)
+  manageState.setState('name', 'futema') 
+  console.log(manageState.getState())
 }
 
 
-const createVApp = (state, arrMethods=[]) => createElement('div', {
+const createVApp = (state) => createElement('div', {
   attrs: {
     id: 'app',
     dataCount: state.count,
