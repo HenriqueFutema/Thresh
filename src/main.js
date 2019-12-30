@@ -13,7 +13,8 @@ manageState.createState('name', 'henrique');
 
 
 const test = () =>{
-  console.log("aaaaa")
+  const data = manageState.getState()
+  console.log(data)
 }
 
 
