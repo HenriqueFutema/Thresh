@@ -8,7 +8,6 @@ const tModel = (el) =>{
         
         function changeInput(){
             manageState.setState(el, $el.value)
-            $el.value = manageState.setState(el, $el.value)
         }
         $el.addEventListener('change', changeInput)
     }
