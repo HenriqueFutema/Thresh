@@ -51,7 +51,7 @@ const createVApp = (state) => createElement('div', {
 
 //DATA TEST
 let count = 0
-const state = manageState.getState()
+let _state = {}
 
 let vApp = createVApp(manageState.getState());
 const $app = render(vApp);
@@ -70,12 +70,13 @@ const generateApp = () =>{
   render(vApp);
   mount($app, elementAppId);
   const newState = manageState.getState()
+  console.log(_state, newState)
   const vNewApp = createVApp(manageState.getState());
-  const patch = diff(vApp, vNewApp, state, newState);
+  const patch = diff(vApp, vNewApp, _state, newState);
   $rootEl = patch($rootEl);
-  vApp = vNewApp; 
+  _state = newState
+  vApp = vNewApp;
 }
 
-generateApp();
 
 export default generateApp
