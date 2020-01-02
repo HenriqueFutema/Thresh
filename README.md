@@ -1,4 +1,4 @@
-# Thresh
+<h2 align="center">Thresh</h2>
 Experimental UI library
 
 ### Run `npm install` or `yarn`
