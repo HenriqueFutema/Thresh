@@ -6,10 +6,8 @@ import diff from './vdom/diff';
 //USER
 import manageState from './vdom/manageState'
 
-
 manageState.createState('count', 0);
 manageState.createState('name', 'henrique');
-
 
 const test = () =>{
   manageState.setState('name', 'futema') 
@@ -38,7 +36,7 @@ const createVApp = (state) => createElement('div', {
           id: 'btn'
         }
       },
-      children:["Button"]
+      children:["Button {{ state.count }} ", String(state.name)]
     }),
     String(state.name),
     String(state.count),
@@ -65,11 +63,11 @@ setInterval(() => {
   manageState.setState('count', manageState.getState().count + 1) 
   count++;
   generateApp();
-}, 10000);
+}, 3000);
 
-
-function generateApp(){
-  console.log("test")
+const generateApp = () =>{
+  render(vApp)
+  console.log("aaa")
   const vNewApp = createVApp(manageState.getState())
   const patch = diff(vApp, vNewApp);
   $rootEl = patch($rootEl);
@@ -77,3 +75,5 @@ function generateApp(){
 }
 
 generateApp();
+
+export default generateApp
