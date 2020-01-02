@@ -11,7 +11,6 @@ const zip = (xs, ys) => {
 const diffAttrs = (oldAttrs, newAttrs) => {
   const patches = [];
 
-  // set new attributes
   for (const [k, v] of Object.entries(newAttrs)) {
     patches.push($node => {
       $node.setAttribute(k, v);
@@ -19,7 +18,6 @@ const diffAttrs = (oldAttrs, newAttrs) => {
     });
   }
 
-  // remove old attributes
   for (const k in oldAttrs) {
     if (!(k in newAttrs)) {
       patches.push($node => {
@@ -63,7 +61,7 @@ const diffChildren = (oldVChildren, newVChildren) => {
   };
 };
 
-const diff = (vOldNode, vNewNode) => {
+const diff = (vOldNode, vNewNode, oldState, newState) => {
   if (vNewNode === undefined) {
     return $node => {
       $node.remove();
@@ -73,7 +71,9 @@ const diff = (vOldNode, vNewNode) => {
 
   if (typeof vOldNode === 'string' ||
     typeof vNewNode === 'string') {
-    if (vOldNode !== vNewNode) {
+      console.log(oldState, newState)
+    //Validar Virtual DOM oldNode -> newNode e oldState -> newState
+    if (true) {
       return $node => {
         const $newNode = render(vNewNode);
         $node.replaceWith($newNode);

@@ -51,6 +51,7 @@ const createVApp = (state) => createElement('div', {
 
 //DATA TEST
 let count = 0
+const state = manageState.getState()
 
 let vApp = createVApp(manageState.getState());
 const $app = render(vApp);
@@ -66,10 +67,11 @@ setInterval(() => {
 }, 3000);
 
 const generateApp = () =>{
-  render(vApp)
-  console.log("aaa")
-  const vNewApp = createVApp(manageState.getState())
-  const patch = diff(vApp, vNewApp);
+  render(vApp);
+  mount($app, elementAppId);
+  const newState = manageState.getState()
+  const vNewApp = createVApp(manageState.getState());
+  const patch = diff(vApp, vNewApp, state, newState);
   $rootEl = patch($rootEl);
   vApp = vNewApp; 
 }

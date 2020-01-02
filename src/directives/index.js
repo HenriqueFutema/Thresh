@@ -7,7 +7,7 @@ function callDirectives(k, v){
     const directive = {
         'tModel': () => tModel(v),
         'tClick': () => tClick(v),
-        'default': () => console.log('Error directive')
+        'default': () => console.error('Error directive')
     }
     return (directive[k] || directive['default'])();
 }

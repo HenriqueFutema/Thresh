@@ -9,10 +9,6 @@ const getState = () =>{
 }
 
 const setState = (_key, value) =>{
-    console.log(state);
-    console.log(value);
-    
-    
     return state[_key] = value
 }
 
