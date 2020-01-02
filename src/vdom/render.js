@@ -21,8 +21,8 @@ const renderElem = ({ tagName, attrs, children }) => {
 
 const render = vNode => {
   if (typeof vNode === "string") {
-    bindText(vNode)
-    return document.createTextNode(vNode);
+    const binded = bindText(vNode)
+    return document.createTextNode(binded);
   }
 
   return renderElem(vNode);
