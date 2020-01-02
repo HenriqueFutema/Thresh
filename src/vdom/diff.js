@@ -73,7 +73,6 @@ const diff = (vOldNode, vNewNode, oldState, newState) => {
 
   if (typeof vOldNode === 'string' ||
     typeof vNewNode === 'string') {
-      console.log(oldState, newState)
     if (true) {
       return $node => {
         const $newNode = render(vNewNode);
