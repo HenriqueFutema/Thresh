@@ -3,8 +3,6 @@ import render from './vdom/render';
 import mount from './vdom/mount';
 import diff from './vdom/diff';
 
-import { ObservableObject } from 'rxjs-observable-object';
-
 //USER
 import manageState from './vdom/manageState'
 
@@ -69,9 +67,6 @@ setInterval(() => {
   generateApp();
 }, 10000);
 
-const { proxy: object, events } = new ObservableObject(manageState.getState());
-
-events.onSet.subscribe(console.log);
 
 function generateApp(){
   console.log("test")
