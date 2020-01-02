@@ -3,15 +3,11 @@ import render from './vdom/render';
 import mount from './vdom/mount';
 import diff from './vdom/diff';
 
-import { ObservableObject } from 'rxjs-observable-object';
-
 //USER
 import manageState from './vdom/manageState'
 
-
 manageState.createState('count', 0);
 manageState.createState('name', 'henrique');
-
 
 const test = () =>{
   manageState.setState('name', 'futema') 
@@ -40,7 +36,7 @@ const createVApp = (state) => createElement('div', {
           id: 'btn'
         }
       },
-      children:["Button"]
+      children:["Button {{ state.name }} "]
     }),
     String(state.name),
     String(state.count),
@@ -69,12 +65,8 @@ setInterval(() => {
   generateApp();
 }, 10000);
 
-const { proxy: object, events } = new ObservableObject(manageState.getState());
-
-events.onSet.subscribe(console.log);
 
 function generateApp(){
-  console.log("test")
   const vNewApp = createVApp(manageState.getState())
   const patch = diff(vApp, vNewApp);
   $rootEl = patch($rootEl);
