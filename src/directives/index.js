@@ -1,5 +1,5 @@
-import tModel from './tModel'
-import tClick from './tClick'
+import tModel from './tModel';
+import tClick from './tClick';
 
 //All Directives
 function callDirectives(k, v){
@@ -11,4 +11,5 @@ function callDirectives(k, v){
     }
     return (directive[k] || directive['default'])();
 }
+
 export default callDirectives
