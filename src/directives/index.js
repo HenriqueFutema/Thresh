@@ -2,8 +2,13 @@ import tModel from './tModel'
 import tClick from './tClick'
 
 //All Directives
-const callDirectives = (k, v) =>{
-    k === 'tModel' ? tModel(v) : () => {return}
-    k === 'tClick' ? tClick(v) : () => {return}
+function callDirectives(k, v){
+    
+    const directive = {
+        'tModel': () => tModel(v),
+        'tClick': () => tClick(v),
+        'default': () => console.log('Error directive')
+    }
+    return (directive[k] || directive['default'])();
 }
 export default callDirectives
