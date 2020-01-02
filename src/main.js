@@ -3,20 +3,19 @@ import render from './vdom/render';
 import mount from './vdom/mount';
 import diff from './vdom/diff';
 
-
 //USER
 import manageState from './vdom/manageState'
-import tModel from './directives/tModel'
 
-let methods = {
+manageState.createState('count', 0);
+manageState.createState('name', 'henrique');
 
-  test: () =>{
-    console.log("dfdf")
-  }
-
+const test = () =>{
+  manageState.setState('name', 'futema') 
+  console.log(manageState.getState())
 }
 
-const createVApp = (state, methods) => createElement('div', {
+
+const createVApp = (state) => createElement('div', {
   attrs: {
     id: 'app',
     dataCount: state.count,
@@ -32,9 +31,12 @@ const createVApp = (state, methods) => createElement('div', {
     createElement('button', {
       attrs:{
         id: "btn",
-        tClick: "methods.test"
+        tClick: {
+          method: test,
+          id: 'btn'
+        }
       },
-      children:["Button"]
+      children:["Button {{ state.name }} "]
     }),
     String(state.name),
     String(state.count),
@@ -47,14 +49,15 @@ const createVApp = (state, methods) => createElement('div', {
 });
 
 
+//DATA TEST
+let count = 0
+
 let vApp = createVApp(manageState.getState());
 const $app = render(vApp);
 
 const elementAppId = document.getElementById('app')
 let $rootEl = mount($app, elementAppId);
-let count = 0
 
-generateApp;
 
 setInterval(() => {
   manageState.setState('count', manageState.getState().count + 1) 
@@ -63,25 +66,11 @@ setInterval(() => {
 }, 10000);
 
 
-let arrMethods = {}
-for(const m of Object.values(methods)){
-  const _methods = m.toString().replace(/^[^{]*{\s*/,'').replace(/\s*}[^}]*$/,'');
-  console.log(_methods);
-  
-}
-
-manageState.createState('count', 0);
-manageState.createState('name', 'henrique');
-manageState.setState('count', count);
-
-const generateApp = () => {
-  console.log(arrMethods)
-  const vNewApp = createVApp(manageState.getState(), arrMethods)
+function generateApp(){
+  const vNewApp = createVApp(manageState.getState())
   const patch = diff(vApp, vNewApp);
   $rootEl = patch($rootEl);
   vApp = vNewApp; 
 }
 
 generateApp();
-
-export default generateApp;
