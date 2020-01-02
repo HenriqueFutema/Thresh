@@ -1,4 +1,5 @@
 import callDirectives from '../directives/index'
+import bindText from '../bind/bindText'
 
 const renderElem = ({ tagName, attrs, children }) => {
   const $el = document.createElement(tagName);
@@ -20,7 +21,8 @@ const renderElem = ({ tagName, attrs, children }) => {
 
 const render = vNode => {
   if (typeof vNode === "string") {
-    return document.createTextNode(vNode);
+    const binded = bindText(vNode)
+    return document.createTextNode(binded);
   }
 
   return renderElem(vNode);

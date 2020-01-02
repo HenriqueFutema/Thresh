@@ -23,6 +23,7 @@ const createVApp = (state) => createElement('div', {
   children: [
     createElement('input', {
       attrs:{
+        value: state.name,
         id: 'name',
         tModel: 'name'
       }
@@ -35,7 +36,7 @@ const createVApp = (state) => createElement('div', {
           id: 'btn'
         }
       },
-      children:["Button {{ state.name }} "]
+      children:["Button {{ state.count }} ", String(state.name)]
     }),
     String(state.name),
     String(state.count),
@@ -65,6 +66,7 @@ setInterval(() => {
 }, 3000);
 
 const generateApp = () =>{
+  render(vApp)
   console.log("aaa")
   const vNewApp = createVApp(manageState.getState())
   const patch = diff(vApp, vNewApp);
