@@ -10,8 +10,9 @@ manageState.createState('count', 0);
 manageState.createState('name', 'henrique');
 
 const test = () =>{
-  manageState.setState('name', 'futema') 
-  console.log(manageState.getState())
+  manageState.setState('name', 'futema'); 
+  console.log(manageState.getState());
+  generateApp()
 }
 
 
