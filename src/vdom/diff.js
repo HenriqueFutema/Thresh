@@ -71,9 +71,11 @@ const diff = (vOldNode, vNewNode, oldState, newState) => {
     };
   }
 
+  console.log({ oldState, newState })
+
   if (typeof vOldNode === 'string' ||
     typeof vNewNode === 'string') {
-    if (true) {
+    if (vOldNode !== vNewNode || oldState !== newState) {
       return $node => {
         const $newNode = render(vNewNode);
         $node.replaceWith($newNode);
