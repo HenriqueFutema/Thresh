@@ -74,7 +74,7 @@ const generateApp = () => {
   render(vApp);
   mount($app, elementAppId)
   const vNewApp = createVApp(manageState.getState())
-  const patch = diff(vApp, vNewApp, oldState, newState);
+  const patch = oldState && newState !== undefined ? diff(vApp, vNewApp, oldState, newState) : diff(vApp, vNewApp);
   $rootEl = patch($rootEl);
   vApp = vNewApp;
   oldState = newState;

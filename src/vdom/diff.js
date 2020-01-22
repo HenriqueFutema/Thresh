@@ -63,7 +63,7 @@ const diffChildren = (oldVChildren, newVChildren) => {
   };
 };
 
-const diff = (vOldNode, vNewNode, oldState, newState) => {
+const diff = (vOldNode, vNewNode, oldState={}, newState={}) => {
   if (vNewNode === undefined) {
     return $node => {
       $node.remove();
