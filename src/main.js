@@ -66,13 +66,18 @@ setInterval(() => {
   generateApp();
 }, 3000);
 
+let oldState = manageState.getState()
+
 const generateApp = () => {
+  const newState = manageState.getState()
+  console.log(newState)
   render(vApp);
   mount($app, elementAppId)
   const vNewApp = createVApp(manageState.getState())
-  const patch = diff(vApp, vNewApp);
+  const patch = diff(vApp, vNewApp, oldState, newState);
   $rootEl = patch($rootEl);
-  vApp = vNewApp; 
+  vApp = vNewApp;
+  oldState = newState;
 }
 
 generateApp();
