@@ -4,7 +4,7 @@ import mount from './vdom/mount';
 import diff from './vdom/diff';
 
 //USER
-import manageState from './vdom/manageState'
+import manageState from './state/manageState'
 
 manageState.createState('count', 0);
 manageState.createState('name', 'henrique');

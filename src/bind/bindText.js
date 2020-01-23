@@ -1,4 +1,4 @@
-import manageState from '../vdom/manageState'
+import manageState from '../state/manageState'
 
 const bindText = (textValue) =>{
     const text = textValue.split(/(\{\{[^}]+\}\})/g).filter(x => x !== '')

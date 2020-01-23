@@ -1,4 +1,4 @@
-import manageState from '../vdom/manageState'
+import manageState from '../state/manageState'
 
 
 const tModel = (el) =>{
