@@ -22,3 +22,15 @@ const data = manageState.getState()
 // Set state
 manageState.setState('count', 1) 
 ```
+***
+
+###### Hello world - Create element
+Description: for now children needs to be a array
+```javascript
+//...
+createElement('h1', {
+  children:["Hello World"]
+}
+```
+
+...
