@@ -32,5 +32,14 @@ createElement('h1', {
   children:["Hello World"]
 }
 ```
+***
+
+###### Bind state
+```javascript
+manageState.createState('name', "Thresh");
+createElement('h1', {
+  children:["Hello World {{ state.name }}"]
+}
+```
 
 ...
