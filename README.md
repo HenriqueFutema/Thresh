@@ -35,6 +35,7 @@ createElement('h1', {
 ***
 
 ###### Bind state
+Description: you need to pass the state as parameter!!
 ```javascript
 manageState.createState('name', "Thresh");
 createElement('h1', {
