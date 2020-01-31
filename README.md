@@ -42,5 +42,29 @@ createElement('h1', {
   children:["Hello World {{ state.name }}"]
 }
 ```
+***
+
+###### tModel -> get a value from input
+```javascript
+  //...
+    attrs:{
+      value: state.name,
+      tModel: 'name'
+    }
+```
+***
+
+###### tClick -> onClick
+```javascript
+  //...
+    attrs:{
+      id: "btn",
+      tClick: {
+        method: test,
+        id: 'btn'
+      }
+```
+
+### Thresh CLI coming soon...
 
 ...
