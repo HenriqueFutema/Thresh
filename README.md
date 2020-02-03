@@ -66,5 +66,7 @@ createElement('h1', {
 ```
 
 ### Thresh CLI coming soon...
+Documentation at https://github.com/HenriqueFutema/CLI-Thresh
+
 
 ...
