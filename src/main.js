@@ -70,7 +70,6 @@ let oldState = manageState.getState()
 
 const generateApp = () => {
   const newState = manageState.getState()
-  console.log(newState)
   render(vApp);
   mount($app, elementAppId)
   const vNewApp = createVApp(manageState.getState())
