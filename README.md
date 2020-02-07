@@ -65,8 +65,9 @@ createElement('h1', {
       }
 ```
 
-### Thresh CLI coming soon...
+### Thresh CLI
 Documentation at https://github.com/HenriqueFutema/CLI-Thresh
+NPM Link: https://www.npmjs.com/package/thresh-cli
 
 
 ...
