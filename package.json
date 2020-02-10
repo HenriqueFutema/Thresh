@@ -1,20 +1,28 @@
 {
-  "name": "Thresh",
+  "name": "@my-org/thresh",
   "version": "1.0.0",
-  "description": "",
+  "description": "<h2 align=\"center\">Thresh</h2>\r <p align=\"center\"><img width=\"100\" src=\"https://gamepedia.cursecdn.com/lolesports_gamepedia_en/7/7b/ThreshSquare.png\" alt=\"Thresh\"></p>\r Experimental UI library",
   "main": "index.js",
   "scripts": {
     "dev": "parcel src/index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Henrique Futema",
   "license": "ISC",
   "devDependencies": {
     "parcel-bundler": "^1.12.4"
   },
   "dependencies": {
     "install": "^0.13.0",
-    "npm": "^6.13.4",
-  }
+    "npm": "^6.13.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HenriqueFutema/Thresh.git"
+  },
+  "bugs": {
+    "url": "https://github.com/HenriqueFutema/Thresh/issues"
+  },
+  "homepage": "https://github.com/HenriqueFutema/Thresh#readme"
 }
