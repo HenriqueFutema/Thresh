@@ -2,8 +2,12 @@
 <p align="center"><img width="100" src="https://gamepedia.cursecdn.com/lolesports_gamepedia_en/7/7b/ThreshSquare.png" alt="Thresh"></p>
 Experimental UI library
 
-### Run `npm install` or `yarn`
-To Install all dependencies
+### Run `npm install threshjs thresh-cli` or `yarn add threshjs thresh-cli`
+To Install all dependencies and CLI
+
+### Run `cli create-thresh-app`
+To create a Thresh app
+More informations: https://www.npmjs.com/package/thresh-cli
 
 #### `npm run dev` or `yarn dev`
 Open: http://localhost:1234/
