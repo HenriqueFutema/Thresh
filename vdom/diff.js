@@ -71,7 +71,9 @@ const diff = (vOldNode, vNewNode, oldState={}, newState={}) => {
     };
   }
 
-  console.log({ oldState, newState })
+  if (vOldNode === vNewNode && oldState === newState) {
+    return;
+  }
 
   if (typeof vOldNode === 'string' ||
     typeof vNewNode === 'string') {
