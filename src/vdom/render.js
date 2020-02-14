@@ -6,7 +6,7 @@ const renderElem = ({ tagName, attrs, children }) => {
 
   for (const [k, v] of Object.entries(attrs)) {
     if (k[0] === 't') {
-      callDirectives(k, v)
+      callDirectives(k, v, $el)
     }
     $el.setAttribute(k, v);
   }

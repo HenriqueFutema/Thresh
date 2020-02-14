@@ -32,6 +32,7 @@ const createVApp = (state) => createElement('div', {
     createElement('button', {
       attrs:{
         id: "btn",
+        tIf: "true",
         tClick: {
           method: test,
           id: 'btn'
