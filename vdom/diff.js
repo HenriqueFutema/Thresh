@@ -52,7 +52,9 @@ const diffChildren = (oldVChildren, newVChildren) => {
 
   return $parent => {
     for (const [patch, child] of zip(childPatches, $parent.childNodes)) {
-      patch(child);
+      if(patch !== undefined){
+        patch(child);
+      }
     }
 
     for (const patch of additionalPatches) {
