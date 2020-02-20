@@ -1,6 +1,6 @@
 {
   "name": "threshjs",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "<h2 align=\"center\">Thresh</h2>\r <p align=\"center\"><img width=\"100\" src=\"https://gamepedia.cursecdn.com/lolesports_gamepedia_en/7/7b/ThreshSquare.png\" alt=\"Thresh\"></p>\r Experimental UI library",
   "main": "index.js",
   "scripts": {
